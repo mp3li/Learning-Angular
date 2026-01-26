@@ -1,0 +1,19 @@
+1/25/2026
+
+Objective:
+
+The goal of this assignment is to practice building a structured Angular application using the latest version of Angular. You will configure routing, create core pages, and develop reusable UI components while following best practices for modular design.
+
+• Instructions:
+
+• Configure Angular Router Links to an external site.:
+        • Set up feature modules for different sections of the app.
+        • Implement route parameters for dynamic navigation.
+        • Add placeholder route guards (authentication or role-based).
+• Build Core Pages:
+        • Create the following stub pages: Home, List, Detail, and Create/Edit.
+        • Ensure each page is connected through the Angular Router.
+• Create Reusable UI Components:
+        • Develop components Links to an external site.for form fields, cards, and tables.
+        • Use Angular’s component architecture to make them reusable across pages.
+ 
