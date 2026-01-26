@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="home-container">
+  <h1>Welcome to the Home Page</h1>
+  <app-card [title]="'Getting Started'">
+    <p>This is a sample Angular application demonstrating routing, feature modules, and reusable components.</p>
+    <p><a routerLink="/items">View Items</a> or <a routerLink="/editor">Create New Item</a></p>
+  </app-card>
+  <app-card [title]="'Features'">
+    <ul>
+      <li>Angular Router with feature modules</li>
+      <li>Route parameters for dynamic navigation</li>
+      <li>Route guards for authentication</li>
+      <li>Reusable UI components</li>
+    </ul>
+  </app-card>
+</div>

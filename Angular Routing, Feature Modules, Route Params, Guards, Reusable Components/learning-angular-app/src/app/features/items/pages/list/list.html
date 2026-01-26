@@ -1,1 +1,10 @@
-<p>list works!</p>
+<div class="list-container">
+  <div class="list-header">
+    <h1>Items</h1>
+    <a routerLink="/editor" class="btn-create">Create New Item</a>
+  </div>
+  <app-table [headers]="headers" [rows]="items"></app-table>
+  <div class="list-footer">
+    <p>Click on an item to view details</p>
+  </div>
+</div>

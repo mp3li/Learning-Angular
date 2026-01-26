@@ -1,1 +1,40 @@
-<p>create-edit works!</p>
+<div class="create-edit-container">
+  <div class="form-header">
+    <a routerLink="/items" class="btn-cancel">← Cancel</a>
+    <h1>{{ itemId ? 'Edit Item' : 'Create New Item' }}</h1>
+  </div>
+  <app-card [title]="itemId ? 'Edit Item' : 'Create New Item'">
+    <form (ngSubmit)="onSubmit()">
+      <app-form-field 
+        id="name"
+        label="Item Name"
+        type="text"
+        [value]="form.name"
+        placeholder="Enter item name"
+        (valueChanged)="form.name = $event">
+      </app-form-field>
+      
+      <app-form-field 
+        id="description"
+        label="Description"
+        type="text"
+        [value]="form.description"
+        placeholder="Enter item description"
+        (valueChanged)="form.description = $event">
+      </app-form-field>
+      
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" [(ngModel)]="form.status" name="status" class="form-control">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">{{ itemId ? 'Update Item' : 'Create Item' }}</button>
+        <a routerLink="/items" class="btn-cancel-link">Cancel</a>
+      </div>
+    </form>
+  </app-card>
+</div>
