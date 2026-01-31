@@ -1,0 +1,22 @@
+Reactive Forms for Data Collection
+1/30/2026
+
+Objectives:
+
+• Understand the purpose and advantages of using Reactive Forms in Angular for data collection.
+• Learn how to create and configure FormGroup, FormControl, and FormArray structures.
+• Implement client-side validation using built‑in, custom, and asynchronous validators.
+• Display clear and user-friendly error messages based on form control state.
+• Practice building dynamic and nested forms to support more complex data-entry scenarios.
+• Apply best practices for robust, accessible, and maintainable form design.
+
+Instructions:
+
+• Create a new Angular component dedicated to collecting user input using Reactive Forms Links to an external site.
+• Set up a FormGroup that contains at least three FormControl elements with appropriate default values.
+• Add validation rules to each form control. Include at least one custom validator and one asynchronous validator.
+• Build the HTML form and bind all controls using the Reactive Forms directives.
+• Display validation error messages beneath each field when the user interacts with the form or attempts to submit it.
+• Include at least one dynamic form section using FormArray, allowing the user to add or remove repeated fields.
+• Implement a submit function that checks form validity and logs the final form value to the console.
+• Test your form by entering various valid and invalid values to ensure all validation logic works as expected.

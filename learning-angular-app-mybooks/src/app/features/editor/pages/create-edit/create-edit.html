@@ -1,0 +1,66 @@
+<div class="page-container">
+  <h1>{{ itemId ? 'Edit Book Entry' : 'Create Book Entry' }}</h1>
+  <div class="save-message" *ngIf="saveMessage">{{ saveMessage }}</div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" class="form-control" type="text" formControlName="title" placeholder="Book title" />
+      <div class="error-message" *ngIf="showError('title', 'required')">Title is required.</div>
+      <div class="error-message" *ngIf="showError('title', 'minlength')">Title must be at least 3 characters.</div>
+      <div class="error-message" *ngIf="showError('title', 'whitespace')">Title cannot be blank.</div>
+      <div class="error-message" *ngIf="showError('title', 'titleTaken')">That title is already taken.</div>
+      <div class="error-message" *ngIf="form.get('title')?.pending">Checking title...</div>
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input id="author" class="form-control" type="text" formControlName="author" placeholder="Author name" />
+      <div class="error-message" *ngIf="showError('author', 'required')">Author is required.</div>
+      <div class="error-message" *ngIf="showError('author', 'minlength')">Author must be at least 2 characters.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="readingStatus">Reading status:</label>
+      <select id="readingStatus" class="form-control" formControlName="readingStatus">
+        <option value="Unread">Unread</option>
+        <option value="Up Next">Up Next</option>
+        <option value="Currently Reading">Currently Reading</option>
+        <option value="Finished">Finished</option>
+      </select>
+      <div class="error-message" *ngIf="showError('readingStatus', 'required')">Reading status is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="series">Series name (Type 'no' if not applicable)</label>
+      <input id="series" class="form-control" type="text" formControlName="series" placeholder="Series name" />
+      <div class="error-message" *ngIf="showError('series', 'required')">Series name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Series ranking:</label>
+      <div class="series-row">
+        <input class="form-control" type="number" formControlName="seriesNumber" placeholder="1" aria-label="Book number" />
+        <span class="series-separator">of</span>
+        <input class="form-control" type="number" formControlName="seriesTotal" placeholder="4" aria-label="Total in series" />
+      </div>
+      <div class="error-message" *ngIf="showError('seriesNumber', 'min')">Book number must be 1 or higher.</div>
+      <div class="error-message" *ngIf="showError('seriesTotal', 'min')">Total in series must be 1 or higher.</div>
+    </div>
+
+    <div class="form-group" formArrayName="genres">
+      <label>Genres</label>
+      <ng-container *ngFor="let genreCtrl of genres.controls; let i = index">
+        <div class="genre-item">
+          <input class="form-control" type="text" [formControlName]="i" placeholder="Genre" />
+          <button type="button" class="btn-remove" (click)="removeGenre(i)">Remove</button>
+        </div>
+      </ng-container>
+      <button type="button" class="btn-add-genre" (click)="addGenre()">Add Genre</button>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn-save">Add to myBooks</button>
+    </div>
+  </form>
+</div>

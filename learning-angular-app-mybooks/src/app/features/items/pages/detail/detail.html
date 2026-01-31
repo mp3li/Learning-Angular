@@ -1,0 +1,26 @@
+<div class="detail-container">
+  <div class="detail-header">
+    <a routerLink="/items" class="btn-back">← Back to myBooks</a>
+    <h1>Book Details</h1>
+  </div>
+  <div *ngIf="books$ | async as books" class="detail-content">
+    <ng-container *ngIf="books.length > 0; else emptyState">
+      <app-card *ngFor="let book of books" class="detail-card" [title]="book.title + ' by ' + book.author" [attr.id]="'book-' + book.id">
+        <p><strong>ID:</strong> {{ book.id }}</p>
+        <p><strong>Title:</strong> {{ book.title }}</p>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Series:</strong> {{ book.series || '—' }}</p>
+        <p><strong>Series Ranking:</strong> {{ getSeriesPosition(book) || '—' }}</p>
+        <p><strong>Reading Status:</strong> {{ book.readingStatus }}</p>
+        <div class="detail-actions">
+          <a routerLink="/create-edit" class="btn-edit">Edit Book Entry</a>
+        </div>
+      </app-card>
+    </ng-container>
+    <ng-template #emptyState>
+      <div class="detail-error">
+        <p>No books yet</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

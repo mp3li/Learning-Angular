@@ -1,0 +1,20 @@
+<div class="home-container">
+  <h1>Welcome to the Home Page</h1>
+  <app-card [title]="'Getting Started'">
+    <p>This is a sample Angular application demonstrating routing, feature modules, and reusable components.</p>
+    <p>For project purposes, the theme of this application is a personal book manager called myBooks.</p>
+    <p><a routerLink="/items">View myBooks</a> or <a routerLink="/create-edit">Create Book Entry</a></p>
+  </app-card>
+  <app-card [title]="'Features'">
+    <ul>
+      <li>Angular Router with feature modules</li>
+      <li>Route parameters for dynamic navigation</li>
+      <li>Route guards for authentication</li>
+      <li>Reusable UI components</li>
+      <li>Add new books with title, author, and series info</li>
+      <li>Track reading status for each entry</li>
+      <li>View book entries in a table and open details</li>
+      <li>Quickly edit book entries from the details page</li>
+    </ul>
+  </app-card>
+</div>

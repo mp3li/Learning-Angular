@@ -1,0 +1,10 @@
+<div class="list-container">
+  <div class="list-header">
+    <h1>myBooks</h1>
+    <a routerLink="/create-edit" class="btn-create">Create Book Entry</a>
+  </div>
+  <app-table [headers]="headers" [rows]="(rows$ | async) ?? []" (rowClick)="openDetail($event)"></app-table>
+  <div class="list-footer">
+    <p>Click on a book to view details</p>
+  </div>
+</div>
