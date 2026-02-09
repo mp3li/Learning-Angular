@@ -1,10 +1,64 @@
-<div class="list-container">
-  <div class="list-header">
-    <h1>myBooks</h1>
-    <a routerLink="/create-edit" class="btn-create">Create Book Entry</a>
+<section class="min-h-screen bg-slate-100 p-4 text-slate-800 md:p-8">
+  <div class="mx-auto max-w-6xl">
+    <header class="mb-6 rounded-2xl bg-white p-6 shadow-md">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-wide text-slate-500">My Personal Library</p>
+          <h1 class="mt-1 text-3xl font-bold text-slate-900 md:text-4xl">myBooks</h1>
+          <p class="mt-2 text-base text-slate-600">
+            Track every title in your collection, what is up next, and what you are currently reading.
+          </p>
+        </div>
+        <a
+          routerLink="/create-edit"
+          class="inline-flex items-center rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-sky-700"
+        >
+          Create Book Entry
+        </a>
+      </div>
+    </header>
+
+    <section class="mb-6 grid gap-4 md:grid-cols-4">
+      <article class="rounded-xl bg-white p-4 shadow-md">
+        <h2 class="text-sm font-medium text-slate-500">Total Books</h2>
+        <p class="mt-2 text-2xl font-semibold text-slate-900">{{ totalBooks$ | async }}</p>
+      </article>
+      <article class="rounded-xl bg-white p-4 shadow-md">
+        <h2 class="text-sm font-medium text-slate-500">Currently Reading</h2>
+        <p class="mt-2 text-2xl font-semibold text-emerald-700">
+          {{ currentlyReadingCount$ | async }}
+        </p>
+      </article>
+      <article class="rounded-xl bg-white p-4 shadow-md">
+        <h2 class="text-sm font-medium text-slate-500">Up Next</h2>
+        <p class="mt-2 text-2xl font-semibold text-amber-700">{{ upNextCount$ | async }}</p>
+      </article>
+      <article class="rounded-xl bg-white p-4 shadow-md">
+        <h2 class="text-sm font-medium text-slate-500">Finished</h2>
+        <p class="mt-2 text-2xl font-semibold text-blue-700">{{ finishedCount$ | async }}</p>
+      </article>
+    </section>
+
+    <section class="rounded-2xl bg-white p-6 shadow-md">
+      <h2 class="mb-4 text-xl font-semibold text-slate-900">Library Shelf</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <a
+          *ngFor="let book of books$ | async"
+          [routerLink]="['/items', book.id]"
+          class="block rounded-xl bg-slate-50 p-4 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md"
+        >
+          <h3 class="text-lg font-semibold text-slate-900">{{ book.title }}</h3>
+          <p class="mt-1 text-sm text-slate-600">by {{ book.author }}</p>
+          <p class="mt-3 text-sm text-slate-700">Status: {{ book.readingStatus }}</p>
+          <p class="mt-1 text-sm text-slate-700" *ngIf="book.series">
+            Series: {{ book.series }}
+            <span *ngIf="book.seriesNumber && book.seriesTotal">
+              ({{ book.seriesNumber }} of {{ book.seriesTotal }})
+            </span>
+          </p>
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-slate-500">Select a book card to view full details.</p>
+    </section>
   </div>
-  <app-table [headers]="headers" [rows]="(rows$ | async) ?? []" (rowClick)="openDetail($event)"></app-table>
-  <div class="list-footer">
-    <p>Click on a book to view details</p>
-  </div>
-</div>
+</section>
