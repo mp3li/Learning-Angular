@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Book, BookService } from '../../../../core/services/book-service';
+import { Book } from '../../../../core/models';
+import { BookService } from '../../../../core/services/book-service';
 import { map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 

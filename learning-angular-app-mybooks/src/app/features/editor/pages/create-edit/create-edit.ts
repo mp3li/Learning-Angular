@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BookService, ReadingStatus } from '../../../../core/services/book-service';
+import { ReadingStatus } from '../../../../core/models';
+import { BookService } from '../../../../core/services/book-service';
 import { delay, filter, map, of, take } from 'rxjs';
 
 @Component({

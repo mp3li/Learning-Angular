@@ -1,0 +1,27 @@
+2/20/2026
+
+Objective:
+
+The objective of this assignment is to help you understand the difference between interfaces and types in TypeScript. By completing this activity, you will learn when to use each one and how to create simple examples that describe data models used in Angular applications.
+
+Instructions
+
+• Create a new TypeScript file named models.ts.
+
+• Inside the file, create an interface named User with the following properties:
+        • id (number)
+        • name (string)
+        • email (string)
+
+• Next, create a type named UserStatus that can be one of the following values:
+        • "active"
+        • "inactive"
+        • "banned"
+
+• Create another type named UserResponse that represents a union type with:
+        • An object with status: "success" and a user property of type User
+        • An object with status: "error" and a message property of type string
+
+• At the bottom of the file, write a short comment (2 to 3 sentences) explaining:
+        • Why you used an interface for User
+        • Why a type was better for UserStatus and UserResponse

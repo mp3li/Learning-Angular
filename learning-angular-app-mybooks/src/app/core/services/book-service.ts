@@ -1,18 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-export type ReadingStatus = 'Unread' | 'Up Next' | 'Currently Reading' | 'Finished';
-
-export interface Book {
-  id: number;
-  title: string;
-  author: string;
-  series?: string;
-  seriesNumber?: number | null;
-  seriesTotal?: number | null;
-  genres?: string[];
-  readingStatus: ReadingStatus;
-}
+import { Book } from '../models';
 
 const initialBooks: Book[] = [
   {

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AppCardComponent } from '../../../../shared/components/app-card/app-card';
 import { CommonModule } from '@angular/common';
-import { Book, BookService } from '../../../../core/services/book-service';
+import { Book } from '../../../../core/models';
+import { BookService } from '../../../../core/services/book-service';
 import { combineLatest, map, Observable } from 'rxjs';
 
 @Component({
