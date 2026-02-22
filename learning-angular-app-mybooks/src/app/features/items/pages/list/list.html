@@ -62,3 +62,79 @@
     </section>
   </div>
 </section>
+
+<section class="items-page">
+  <header class="list-header">
+    <div>
+      <p class="eyebrow">Public API Objects</p>
+      <h1>Object List</h1>
+      <p>Browse data from GET /objects, then filter, sort, paginate, view details, or delete.</p>
+    </div>
+  </header>
+
+  <section class="controls-card" aria-label="List controls">
+    <label class="control">
+      <span>Search by name</span>
+      <input
+        type="search"
+        [value]="searchTerm"
+        (input)="onSearch(($any($event.target).value || '').toString())"
+        placeholder="Type to filter..."
+      />
+    </label>
+
+    <label class="control">
+      <span>Sort by name</span>
+      <select
+        [value]="sortDirection"
+        (change)="setSortDirection(($any($event.target).value || 'asc') === 'desc' ? 'desc' : 'asc')"
+      >
+        <option value="asc">A to Z</option>
+        <option value="desc">Z to A</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="status-area">
+    <p *ngIf="isLoading" class="status loading">Loading...</p>
+
+    <div *ngIf="errorMessage" class="status error">
+      <p>{{ errorMessage }}</p>
+      <button type="button" (click)="retryLoad()">Retry</button>
+    </div>
+  </section>
+
+  <section *ngIf="!isLoading && !errorMessage" class="list-card">
+    <p class="result-summary">
+      Showing {{ paginatedObjects.length }} of {{ filteredSortedObjects.length }} matching objects.
+    </p>
+
+    <p *ngIf="hasNoResults" class="status empty">No results found.</p>
+
+    <div *ngIf="!hasNoResults" class="object-grid">
+      <article *ngFor="let item of paginatedObjects; trackBy: trackById" class="object-item">
+        <p class="id-label">ID: {{ item.id }}</p>
+        <h2>{{ item.name }}</h2>
+
+        <div class="item-actions">
+          <a [routerLink]="['/items', item.id]">View details</a>
+          <button
+            type="button"
+            (click)="deleteObject(item)"
+            [disabled]="isDeleting(item.id)"
+          >
+            {{ isDeleting(item.id) ? 'Deleting...' : 'Delete' }}
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <div class="pagination-row">
+      <button type="button" (click)="previousPage()" [disabled]="!canGoToPreviousPage">
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button type="button" (click)="nextPage()" [disabled]="!canGoToNextPage">Next</button>
+    </div>
+  </section>
+</section>

@@ -1,7 +1,105 @@
-.detail-content {
-  padding-bottom: 400px;
+.detail-page {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-back {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  color: #1f2937;
+  background: #fff;
+}
+
+.detail-header h1 {
+  margin: 0;
+}
+
+.status {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.status.loading {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status.error {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.status.error button {
+  border: 0;
+  border-radius: 6px;
+  background: #b91c1c;
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
 }
 
 .detail-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
   margin-bottom: 16px;
+}
+
+.detail-card p {
+  margin: 0 0 0.6rem;
+}
+
+.detail-card h2 {
+  margin: 1rem 0 0.75rem;
+}
+
+.data-grid {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.data-row {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.65rem;
+  background: #f9fafb;
+}
+
+.field-key {
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.field-value {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  color: #374151;
+}
+
+.empty {
+  color: #4b5563;
+  margin: 0;
+}
+
+.detail-content {
+  padding-bottom: 400px;
 }

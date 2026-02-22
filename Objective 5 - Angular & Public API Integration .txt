@@ -1,0 +1,61 @@
+2/20/2026
+
+Objective:
+
+Build a beginner-friendly Angular app that calls a public API and presents the data in a useful way. You will use Angular HttpClient with a service, define typed models (interfaces), handle loading and error states, and build two pages: a list page and a detail page. The list page must support filtering, sorting, and pagination. You will also add confirmation dialogs before destructive actions (like delete) to prevent accidents.
+
+Public API endpoint: https://restful-api.dev/ Links to an external site.
+
+Instructions:
+
+1. Create an Angular project or use existing one.
+
+
+2. Create typed models (interfaces):
+
+• In a models folder, create an interface for the API objects. Each object includes an id, a name, and a data field. The data field can contain different keys depending on the object, so allow it to be flexible.
+
+
+3. Create an API service using HttpClient:
+
+• Create a service that talks to the API. It should include methods for:
+        • Get all objects (GET /objects)
+        • Get one object by id (GET /objects/{id})
+        • Delete an object by id (DELETE /objects/{id})
+
+
+4. Handle loading and errors:
+
+• Add a loading state (example: show "Loading..." while waiting) and an error state (example: show a friendly error message). You can handle this using an interceptor or a simple approach in your service/components. Your app should not crash when an error happens.
+
+
+5. Build the List Page:
+
+• Display the objects in a list. Each item should show at least the name and id. Include a way to open a detail page for an item.
+
+
+6. Add filtering (search) on the List Page:
+
+• Add a search box that filters the list by name. It should be case-insensitive. If nothing matches, show a message like "No results found."
+
+
+7. Add sorting on the List Page:
+
+• Add controls to sort by name (A to Z and Z to A). Sorting should update what the user sees.
+
+
+8. Add pagination on the List Page:
+
+• Show only a small number of items per page (example: 5 or 10). Add Next and Previous buttons. Make sure filtering and sorting still work correctly with pagination.
+
+
+9. Build the Detail Page:
+
+• When the user selects an item, navigate to a detail page using the item id. Fetch the single object by id and display its fields. Format the data field so it is readable, and show "N/A" if a value is missing.
+
+
+10. Add confirmation dialogs for destructive actions:
+
+• When the user clicks Delete, show a confirmation message like "Are you sure?" Only delete if the user confirms. After deleting, remove the item from the list in the UI.
+
+
