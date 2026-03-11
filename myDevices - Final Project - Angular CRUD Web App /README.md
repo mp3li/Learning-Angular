@@ -1,7 +1,6 @@
 ![Status](https://img.shields.io/badge/Status-Completed-8A2BE2?labelColor=2E2E2E)
 ![Course](https://img.shields.io/badge/Course-SOFT207%20Angular-8A2BE2?labelColor=2E2E2E)
 ![Language](https://img.shields.io/badge/Language-TypeScript-8A2BE2?labelColor=2E2E2E)
-![Duration](https://img.shields.io/badge/Duration-Objective%207%20Final-8A2BE2?labelColor=2E2E2E)
 ![Program](https://img.shields.io/badge/Program-Software%20Development%20Pathway-8A2BE2?labelColor=2E2E2E)
 ![Focus](https://img.shields.io/badge/Focus-Angular%20CRUD%2C%20Validation%2C%20Routing%2C%20Auth-8A2BE2?labelColor=2E2E2E)
 ![Final Project](https://img.shields.io/badge/Final%20Project-myDevices%20Inventory%20Manager-8A2BE2?labelColor=2E2E2E)
