@@ -1,0 +1,100 @@
+2/8/2026
+
+Objective:
+
+Build a beginner-friendly, end-to-end web application using the latest version of Angular that collects, validates, and presents data. Your app will consume a real Public REST API and implement basic security practices. You will also create a small back-end service with a database to support typical web application features (for example: user accounts and saved items).
+
+Project Scenario:
+
+You are creating a small Inventory Manager web application. Users can view a catalog of items, add new items, edit existing ones, and delete items. Items come from the Public API endpoint at https://restful-api.dev/ Links to an external site., which supports standard CRUD methods (GET, POST, PUT, PATCH, DELETE).
+
+What You Must Build:
+
+   • Front end (Angular + Tailwind CSS): a multi-page (routed) Angular application that performs full CRUD on “objects” using the Public API.
+    • Data collection: at least one form that collects user input and validates it before submitting.
+    • Data presentation: a list/table view plus a detail view that clearly presents returned JSON data to the user.
+    • Typical web application pages: include pages such as Home/Dashboard, List, Details, Create/Edit, and a simple Login/Account area.
+
+Public API You Must Use:
+
+Base URL: https://api.restful-api.dev/objects Links to an external site.
+
+    • Read (list): GET /objects
+    • Read (single): GET /objects/{id}
+    • Create: POST /objects
+    • Update (full): PUT /objects/{id}
+    • Update (partial): PATCH /objects/{id}
+    • Delete: DELETE /objects/{id}
+
+Data Model You Will Use:
+
+The API objects use a structure similar to:
+
+    • id (string)
+    • name (string)
+    • data (object or null) - flexible key/value data you define (example: color, price, year)
+
+Front-End Instructions (Angular and Tailwind Links to an external site.)
+1) Create New Angular App
+
+    • Use the latest Angular version available to you in your environment.
+    • Use Angular routing to create multiple pages (routes).
+    • Organize your code into feature folders (example: objects/, auth/, shared/).
+
+2) Required Pages (Routes)
+
+    • Home/Dashboard: short welcome, navigation links, and quick stats (example: number of objects loaded).
+    • Objects List: display objects from the API in a table or list with “View”, “Edit”, and “Delete” actions.
+    • Object Details: show a single object and its data clearly (handle null data safely).
+    • Create Object: form to create a new object (POST).
+    • Edit Object: form to update an object (PUT or PATCH).
+    • Not Found: a 404 page for unknown routes.
+
+3) Forms and Validation
+
+    • Create a form with fields:
+        • Name (required, minimum length 3)
+        • Data (at least two fields of your choice, example: color and price; validate as needed)
+    • Show helpful validation messages (example: “Name is required”).
+    • Disable the submit button until the form is valid.
+
+4) API Integration Requirements
+
+    • Create an Angular service (example: ObjectsService) that handles all HTTP requests.
+    • Use Angular HttpClient and strongly-typed interfaces for request/response shapes.
+    • Implement these actions:
+        • Load all objects (GET list).
+        • Load one object by id (GET single).
+        • Create an object (POST).
+        • Update an object (PUT or PATCH).
+        • Delete an object (DELETE).
+    • Show user-friendly error messages when the API call fails.
+    • Add a loading indicator while requests are in progress.
+
+5) UI/UX Expectations (Tailwind CSS)
+
+    • Use semantic HTML elements where possible (header, nav, main, section).
+    • Make navigation clear and consistent between pages.
+    • Ensure every page has a title (h1) and headings in a logical order.
+    • Apply styles to pages with Tailwind CSS
+
+Feature Checklist:
+
+    • Angular app with at least 6 routes (Home, List, Details, Create, Edit, plus 404).
+    • Angular service for API calls and proper error/loading states.
+    • Full CRUD with the Public API (GET, POST, PUT/PATCH, DELETE).
+    • At least one validated form with user-friendly messages.
+    • README with setup instructions.
+
+Submission Requirements:
+
+    • Submit a link to your GitHub repository.
+    • Include a README (Markdown .MD format Links to an external site.)
+    • Ensure your app runs without deprecated Angular patterns (use current Angular tooling and best practices).
+
+Check List:
+
+    • I can list objects from the Public API.
+    • I can view details for a single object.
+    • I can create, update (PUT/PATCH), and delete objects via the API.
+    • My README includes clear setup and run instructions.

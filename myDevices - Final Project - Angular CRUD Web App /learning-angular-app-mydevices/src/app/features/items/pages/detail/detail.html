@@ -1,0 +1,57 @@
+<section class="detail-page">
+  <header class="detail-header">
+    <a routerLink="/items" class="btn-back">Back to object list</a>
+    <h1>Object Details</h1>
+  </header>
+
+  <p *ngIf="isLoading" class="status loading">Loading...</p>
+
+  <div *ngIf="errorMessage" class="status error">
+    <p>{{ errorMessage }}</p>
+    <button type="button" (click)="retryLoad()">Retry</button>
+  </div>
+
+  <article *ngIf="!isLoading && !errorMessage && objectItem" class="detail-card">
+    <p><strong>ID:</strong> {{ objectItem.id || 'N/A' }}</p>
+    <p><strong>Name:</strong> {{ objectItem.name || 'N/A' }}</p>
+
+    <h2>Data</h2>
+    <div *ngIf="dataEntries.length > 0; else noData" class="data-grid">
+      <div *ngFor="let entry of dataEntries" class="data-row">
+        <p class="field-key">{{ entry.key }}</p>
+        <pre class="field-value">{{ entry.value || 'N/A' }}</pre>
+      </div>
+    </div>
+
+    <ng-template #noData>
+      <p class="empty"><strong>Data:</strong> N/A</p>
+    </ng-template>
+  </article>
+</section>
+
+<div class="detail-container">
+  <div class="detail-header">
+    <a routerLink="/items" class="btn-back">← Back to myBooks</a>
+    <h1>Book Details</h1>
+  </div>
+  <div *ngIf="books$ | async as books" class="detail-content">
+    <ng-container *ngIf="books.length > 0; else emptyState">
+      <app-card *ngFor="let book of books" class="detail-card" [title]="book.title + ' by ' + book.author" [attr.id]="'book-' + book.id">
+        <p><strong>ID:</strong> {{ book.id }}</p>
+        <p><strong>Title:</strong> {{ book.title }}</p>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Series:</strong> {{ book.series || '—' }}</p>
+        <p><strong>Series Ranking:</strong> {{ getSeriesPosition(book) || '—' }}</p>
+        <p><strong>Reading Status:</strong> {{ book.readingStatus }}</p>
+        <div class="detail-actions" *ngIf="isAdmin$ | async">
+          <a routerLink="/create-edit" class="btn-edit">Edit Book Entry</a>
+        </div>
+      </app-card>
+    </ng-container>
+    <ng-template #emptyState>
+      <div class="detail-error">
+        <p>No books yet</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

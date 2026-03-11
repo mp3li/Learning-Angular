@@ -1,0 +1,37 @@
+<section class="mx-auto max-w-5xl space-y-6">
+  <header class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+    <h1 class="text-3xl font-bold text-slate-900">myDevices Dashboard</h1>
+    <p class="mt-2 text-slate-600">
+      Manage the public API device inventory with full CRUD, validation, and account-based access.
+    </p>
+
+    <div class="mt-4 flex flex-wrap gap-3">
+      <a routerLink="/objects" class="rounded-md bg-blue-700 px-4 py-2 text-sm font-semibold text-white">Go to Objects List</a>
+      <a routerLink="/objects/create" class="rounded-md bg-emerald-700 px-4 py-2 text-sm font-semibold text-white">Create Object</a>
+      <a routerLink="/account" class="rounded-md bg-slate-700 px-4 py-2 text-sm font-semibold text-white">Account</a>
+    </div>
+  </header>
+
+  <section class="grid gap-4 md:grid-cols-3">
+    <article class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+      <h2 class="text-sm font-medium text-slate-500">API Endpoint</h2>
+      <p class="mt-2 break-all text-sm text-slate-800">https://api.restful-api.dev/objects</p>
+    </article>
+
+    <article class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+      <h2 class="text-sm font-medium text-slate-500">Loaded Objects</h2>
+      <p class="mt-2 text-2xl font-semibold text-slate-900">{{ objectsCount }}</p>
+      <p *ngIf="statsMessage" class="mt-1 text-xs text-amber-700">{{ statsMessage }}</p>
+    </article>
+
+    <article class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+      <h2 class="text-sm font-medium text-slate-500">Signed-In User</h2>
+      <p class="mt-2 text-sm text-slate-700" *ngIf="currentUser$ | async as currentUser; else noUser">
+        {{ currentUser.email }} ({{ currentUser.role }})
+      </p>
+      <ng-template #noUser>
+        <p class="mt-2 text-sm text-slate-700">No active session.</p>
+      </ng-template>
+    </article>
+  </section>
+</section>

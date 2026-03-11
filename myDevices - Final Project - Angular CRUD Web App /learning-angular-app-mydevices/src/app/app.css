@@ -1,0 +1,78 @@
+.navbar {
+  background: linear-gradient(120deg, #0f172a, #0e7490);
+  padding: 1rem;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.2);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.navbar h1 {
+  color: #f8fafc;
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.auth-status {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e0f2fe;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a,
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #f8fafc;
+  text-decoration: none;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  border: none;
+  background: transparent;
+  font: inherit;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-links a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 700;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}

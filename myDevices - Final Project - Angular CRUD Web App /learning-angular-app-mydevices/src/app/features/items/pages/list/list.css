@@ -1,0 +1,157 @@
+.items-page {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.list-header,
+.controls-card,
+.list-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+.list-header h1 {
+  margin: 0.4rem 0;
+}
+
+.list-header p {
+  margin: 0;
+  color: #374151;
+}
+
+.controls-card {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+input,
+select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+.status-area {
+  min-height: 1.5rem;
+}
+
+.status {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.status.loading {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status.error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.status.empty {
+  background: #f9fafb;
+  color: #374151;
+}
+
+.status.error button {
+  border: 0;
+  border-radius: 6px;
+  background: #b91c1c;
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+}
+
+.result-summary {
+  margin: 0 0 0.8rem;
+  color: #4b5563;
+}
+
+.object-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.object-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #f9fafb;
+}
+
+.object-item h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.id-label {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.item-actions a,
+.item-actions button,
+.pagination-row button {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.45rem 0.75rem;
+  font: inherit;
+  text-decoration: none;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.item-actions button {
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+.item-actions button:disabled,
+.pagination-row button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pagination-row {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -1,0 +1,98 @@
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.genre-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.genre-item input {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.btn-remove {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.btn-add-genre {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  align-self: flex-start;
+}
+
+.btn-save {
+  background-color: #7C5340;
+  color: white;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  align-self: flex-start;
+}
+
+.btn-remove:hover, .btn-add-genre:hover, .btn-save:hover {
+  opacity: 0.8;
+}
+
+.debug {
+  background: yellow;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid orange;
+  font-weight: bold;
+}
+
+.form-group {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.series-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.series-separator {
+  color: #555;
+  font-weight: 600;
+}
+
+.save-message {
+  background-color: #ECDFD1;
+  border: 1px solid #7C5340;
+  color: #5a3c2d;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}

@@ -1,0 +1,43 @@
+<section class="mx-auto max-w-4xl space-y-6">
+  <header class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+    <a routerLink="/objects" class="text-sm font-semibold text-blue-700">← Back to objects</a>
+    <h1 class="mt-2 text-3xl font-bold text-slate-900">Object Details</h1>
+    <p class="mt-2 text-slate-600">Review the full object response safely, including null data.</p>
+  </header>
+
+  <section class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+    <p *ngIf="isLoading" class="text-sm text-slate-600">Loading object details...</p>
+
+    <div *ngIf="errorMessage" class="space-y-2 rounded-lg bg-red-50 p-3 text-red-700">
+      <p>{{ errorMessage }}</p>
+      <button type="button" (click)="retryLoad()" class="rounded-md bg-red-700 px-3 py-1.5 text-sm font-semibold text-white">
+        Retry
+      </button>
+    </div>
+
+    <article *ngIf="!isLoading && !errorMessage && objectItem" class="space-y-4">
+      <div class="grid gap-3 md:grid-cols-2">
+        <p><strong>ID:</strong> {{ objectItem.id || 'N/A' }}</p>
+        <p><strong>Name:</strong> {{ objectItem.name || 'N/A' }}</p>
+      </div>
+
+      <h2 class="text-xl font-semibold text-slate-900">Data</h2>
+      <div *ngIf="dataEntries.length > 0; else noData" class="space-y-3">
+        <article *ngFor="let entry of dataEntries" class="rounded-lg bg-slate-50 p-3">
+          <p class="font-semibold text-slate-700">{{ entry.key }}</p>
+          <pre class="mt-1 overflow-x-auto whitespace-pre-wrap text-sm text-slate-600">{{ entry.value }}</pre>
+        </article>
+      </div>
+
+      <ng-template #noData>
+        <p class="rounded-lg bg-slate-50 p-3 text-slate-600">Data: N/A</p>
+      </ng-template>
+
+      <div class="flex gap-3">
+        <a [routerLink]="['/objects', objectItem.id, 'edit']" class="rounded-md bg-amber-200 px-3 py-1.5 text-sm font-semibold text-amber-900">
+          Edit Object
+        </a>
+      </div>
+    </article>
+  </section>
+</section>

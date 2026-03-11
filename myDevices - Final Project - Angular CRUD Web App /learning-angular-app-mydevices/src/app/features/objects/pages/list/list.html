@@ -1,0 +1,129 @@
+<section class="mx-auto max-w-6xl space-y-6">
+  <header class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-sm uppercase tracking-wide text-slate-500">Inventory Manager</p>
+        <h1 class="text-3xl font-bold text-slate-900">myDevices Catalog</h1>
+        <p class="mt-2 text-slate-600">Browse, search, sort, and manage public API device objects.</p>
+      </div>
+      <a
+        routerLink="/objects/create"
+        class="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800"
+      >
+        Create Object
+      </a>
+    </div>
+  </header>
+
+  <section class="grid gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 md:grid-cols-2">
+    <label class="flex flex-col gap-2 text-sm font-medium text-slate-700">
+      Search by name
+      <input
+        type="search"
+        [value]="searchTerm"
+        (input)="onSearch(($any($event.target).value || '').toString())"
+        placeholder="Type to filter..."
+        class="rounded-md border border-slate-300 px-3 py-2"
+      />
+    </label>
+
+    <label class="flex flex-col gap-2 text-sm font-medium text-slate-700">
+      Sort by name
+      <select
+        [value]="sortDirection"
+        (change)="setSortDirection(($any($event.target).value || 'asc') === 'desc' ? 'desc' : 'asc')"
+        class="rounded-md border border-slate-300 px-3 py-2"
+      >
+        <option value="asc">A to Z</option>
+        <option value="desc">Z to A</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+    <p *ngIf="isRefreshing" class="text-sm text-slate-600">Refreshing from live API...</p>
+
+    <div
+      *ngIf="statusMessage"
+      class="space-y-2 rounded-lg p-3"
+      [class.bg-amber-50]="statusTone === 'warning'"
+      [class.text-amber-800]="statusTone === 'warning'"
+      [class.bg-emerald-50]="statusTone === 'success'"
+      [class.text-emerald-800]="statusTone === 'success'"
+    >
+      <p>{{ statusMessage }}</p>
+      <button
+        *ngIf="showRetry"
+        type="button"
+        (click)="retryLoad()"
+        class="rounded-md bg-amber-700 px-3 py-1.5 text-sm font-semibold text-white"
+      >
+        Retry
+      </button>
+    </div>
+
+    <p class="mb-3 text-sm text-slate-600">
+      Showing {{ paginatedObjects.length }} of {{ filteredSortedObjects.length }} matching objects.
+    </p>
+
+    <p *ngIf="hasNoResults" class="rounded-md bg-slate-50 p-3 text-slate-600">No results found.</p>
+
+    <div *ngIf="!hasNoResults" class="overflow-x-auto">
+      <table class="min-w-full border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-slate-200 text-slate-600">
+            <th class="py-2 pr-3">ID</th>
+            <th class="py-2 pr-3">Name</th>
+            <th class="py-2 pr-3">Data Preview</th>
+            <th class="py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of paginatedObjects; trackBy: trackById" class="border-b border-slate-100">
+            <td class="py-2 pr-3 text-slate-500">{{ item.id }}</td>
+            <td class="py-2 pr-3 font-medium text-slate-900">{{ item.name }}</td>
+            <td class="py-2 pr-3 text-slate-600">{{ getDataSummary(item) }}</td>
+            <td class="py-2">
+              <div class="flex flex-wrap gap-2">
+                <a [routerLink]="['/objects', item.id]" class="rounded-md bg-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-800">
+                  View
+                </a>
+                <a [routerLink]="['/objects', item.id, 'edit']" class="rounded-md bg-amber-200 px-2.5 py-1 text-xs font-semibold text-amber-900">
+                  Edit
+                </a>
+                <button
+                  type="button"
+                  (click)="deleteObject(item)"
+                  [disabled]="isDeleting(item.id)"
+                  class="rounded-md bg-red-200 px-2.5 py-1 text-xs font-semibold text-red-900 disabled:opacity-60"
+                >
+                  {{ isDeleting(item.id) ? 'Deleting...' : 'Delete' }}
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4 flex items-center gap-3">
+      <button
+        type="button"
+        (click)="previousPage()"
+        [disabled]="!canGoToPreviousPage"
+        class="rounded-md border border-slate-300 px-3 py-1.5 text-sm disabled:opacity-50"
+      >
+        Previous
+      </button>
+      <span class="text-sm text-slate-600">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button
+        type="button"
+        (click)="nextPage()"
+        [disabled]="!canGoToNextPage"
+        class="rounded-md border border-slate-300 px-3 py-1.5 text-sm disabled:opacity-50"
+      >
+        Next
+      </button>
+    </div>
+  </section>
+</section>

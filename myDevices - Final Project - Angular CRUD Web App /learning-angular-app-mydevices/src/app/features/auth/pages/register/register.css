@@ -1,0 +1,78 @@
+.auth-shell {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border: 1px solid #d6dbe1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0;
+  color: #1f2937;
+}
+
+.subtitle {
+  margin: 0.5rem 0 1rem;
+  color: #4b5563;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+input {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+button {
+  margin-top: 1rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  background: #1d4ed8;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.message.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.field-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.85rem;
+}
+
+.footer-text {
+  margin-top: 1rem;
+  color: #4b5563;
+}

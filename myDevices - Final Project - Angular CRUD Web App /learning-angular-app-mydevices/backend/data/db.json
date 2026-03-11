@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@mydevices.app",
+      "passwordHash": "3a42cd61b9a24f55978262dd38eb59b6f81febb519b9b54f5bd881aaf68f0581",
+      "role": "admin"
+    }
+  ],
+  "savedItems": []
+}
