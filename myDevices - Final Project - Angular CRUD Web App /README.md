@@ -7,7 +7,7 @@
 ![Final Project](https://img.shields.io/badge/Final%20Project-myDevices%20Inventory%20Manager-8A2BE2?labelColor=2E2E2E)
 ![Interface](https://img.shields.io/badge/Interface-Web%20App-8A2BE2?labelColor=2E2E2E)
 
-# myDevices - Objective 7 Final Project by mp3li
+# myDevices - Final Project by mp3li
 
 This folder documents completed coursework for the **SOFT207 Angular final project**.  
 It is organized as a final-project portfolio artifact that delivers a full Angular CRUD application using the required Public API.
@@ -57,7 +57,7 @@ It is organized as a final-project portfolio artifact that delivers a full Angul
 
 --------------------------------------------------
 
-### How to Run Projects:
+### How to Run Project:
 <details>
 <summary><em>Open How to Run Projects</em></summary>
 
@@ -77,11 +77,11 @@ It is organized as a final-project portfolio artifact that delivers a full Angul
 
 --------------------------------------------------
 
-### Objective Portfolio (All Objectives):
+### About myDevices:
 
-#### Objective 7 - Final Project: Angular CRUD Web App
+#### Final Project - myDevices: Angular CRUD Web App
 <details>
-<summary><em>Open Objective 7 Details</em></summary>
+<summary><em>Open Final Project - myDevices: Angular CRUD Web App</em></summary>
 
 - Objective focus:
   - Build a beginner-friendly end-to-end Angular web app with full CRUD, validated data collection, and clear data presentation.
@@ -123,7 +123,7 @@ It is organized as a final-project portfolio artifact that delivers a full Angul
 
 --------------------------------------------------
 
-### Skills Demonstrated Across the Full Course:
+### Skills Demonstrated:
 <details>
 <summary><em>Open Skills Demonstrated Across the Full Course</em></summary>
 
