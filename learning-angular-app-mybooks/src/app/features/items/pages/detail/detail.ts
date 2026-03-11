@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Book } from '../../../../core/models';
 import { ApiObject } from '../../../../core/models/api-object.model';
+import { AuthService } from '../../../../core/services/auth-service';
 import { BookService } from '../../../../core/services/book-service';
 import { ApiObjectService } from '../../../../core/services/api-object-service';
 import { AppCardComponent } from '../../../../shared/components/app-card/app-card';
@@ -16,6 +17,7 @@ import { AppCardComponent } from '../../../../shared/components/app-card/app-car
 })
 export class Detail implements OnInit {
   books$: Observable<Book[]>;
+  isAdmin$: Observable<boolean>;
   objectItem: ApiObject | null = null;
   dataEntries: Array<{ key: string; value: string }> = [];
   isLoading = false;
@@ -24,11 +26,13 @@ export class Detail implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiObjectService: ApiObjectService,
-    private bookService: BookService
+    private bookService: BookService,
+    private authService: AuthService
   ) {
     this.books$ = this.bookService.books$.pipe(
       map(books => [...books].sort((a, b) => a.title.localeCompare(b.title)))
     );
+    this.isAdmin$ = this.authService.role$.pipe(map((role) => role === 'admin'));
   }
 
   ngOnInit(): void {

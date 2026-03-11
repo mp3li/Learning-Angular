@@ -43,7 +43,7 @@
         <p><strong>Series:</strong> {{ book.series || '—' }}</p>
         <p><strong>Series Ranking:</strong> {{ getSeriesPosition(book) || '—' }}</p>
         <p><strong>Reading Status:</strong> {{ book.readingStatus }}</p>
-        <div class="detail-actions">
+        <div class="detail-actions" *ngIf="isAdmin$ | async">
           <a routerLink="/create-edit" class="btn-edit">Edit Book Entry</a>
         </div>
       </app-card>

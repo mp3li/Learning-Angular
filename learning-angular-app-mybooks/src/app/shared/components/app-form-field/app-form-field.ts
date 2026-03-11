@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-field',
@@ -40,5 +40,5 @@ export class AppFormFieldComponent {
   type = input<string>('text');
   id = input<string>('field');
   placeholder = input<string>('');
-  control = input<any>();
+  control = input<FormControl<string | null>>(new FormControl(''));
 }

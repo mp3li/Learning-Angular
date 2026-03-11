@@ -1,15 +1,22 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AuthRole } from '../models/auth.model';
+import { AuthService } from '../services/auth-service';
 
-export const roleGuard: CanActivateFn = (route, state) => {
-  // Placeholder role-based guard
-  const userRole = 'admin'; // Replace with actual role logic
-  const requiredRoles = route.data['roles'] as string[] || ['admin'];
-  
-  if (!requiredRoles.includes(userRole)) {
-    console.log('[RoleGuard] Insufficient role for:', state.url);
-    return false;
+export const roleGuard: CanActivateFn = (route) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (!authService.isLoggedIn()) {
+    return router.createUrlTree(['/login']);
   }
-  
-  console.log('[RoleGuard] Role check passed for:', state.url);
-  return true;
+
+  const requiredRoles = (route.data['roles'] as AuthRole[] | undefined) ?? ['admin'];
+  const userRole = authService.getRole();
+
+  if (userRole && requiredRoles.includes(userRole)) {
+    return true;
+  }
+
+  return router.createUrlTree(['/items']);
 };

@@ -3,7 +3,17 @@
   <app-card [title]="'Getting Started'">
     <p>This is a sample Angular application demonstrating routing, feature modules, and reusable components.</p>
     <p>For project purposes, the theme of this application is a personal book manager called myBooks.</p>
-    <p><a routerLink="/items">View myBooks</a> or <a routerLink="/create-edit">Create Book Entry</a></p>
+    <p *ngIf="currentUser$ | async; else signedOutLinks">
+      <a routerLink="/items">View myBooks</a>
+      <span *ngIf="isAdmin$ | async"> or <a routerLink="/create-edit">Create Book Entry</a></span>
+    </p>
+    <ng-template #signedOutLinks>
+      <p><a routerLink="/login">Sign in</a> to access protected pages.</p>
+    </ng-template>
+    <p>
+      Helpful reference:
+      <a href="https://angular.dev" target="_blank" rel="noopener">Angular official docs</a>
+    </p>
   </app-card>
   <app-card [title]="'Features'">
     <ul>

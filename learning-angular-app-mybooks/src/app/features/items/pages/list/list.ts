@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Book } from '../../../../core/models';
 import { ApiObject } from '../../../../core/models/api-object.model';
+import { AuthService } from '../../../../core/services/auth-service';
 import { BookService } from '../../../../core/services/book-service';
 import { ApiObjectService } from '../../../../core/services/api-object-service';
 
@@ -19,6 +20,7 @@ export class List implements OnInit {
   currentlyReadingCount$: Observable<number>;
   upNextCount$: Observable<number>;
   finishedCount$: Observable<number>;
+  isAdmin$: Observable<boolean>;
 
   objects: ApiObject[] = [];
   searchTerm = '';
@@ -32,7 +34,8 @@ export class List implements OnInit {
 
   constructor(
     private apiObjectService: ApiObjectService,
-    private bookService: BookService
+    private bookService: BookService,
+    private authService: AuthService
   ) {
     this.books$ = this.bookService.books$;
     this.totalBooks$ = this.books$.pipe(map(books => books.length));
@@ -45,6 +48,7 @@ export class List implements OnInit {
     this.finishedCount$ = this.books$.pipe(
       map(books => books.filter(book => book.readingStatus === 'Finished').length)
     );
+    this.isAdmin$ = this.authService.role$.pipe(map((role) => role === 'admin'));
   }
 
   ngOnInit(): void {

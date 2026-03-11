@@ -1,14 +1,16 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AuthService } from '../services/auth-service';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  // Placeholder authentication guard
-  const isAuthenticated = true; // Replace with actual auth logic
-  
-  if (!isAuthenticated) {
-    console.log('[AuthGuard] Access denied for:', state.url);
-    return false;
+export const authGuard: CanActivateFn = (_route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (authService.isLoggedIn()) {
+    return true;
   }
-  
-  console.log('[AuthGuard] Access granted for:', state.url);
-  return true;
+
+  return router.createUrlTree(['/login'], {
+    queryParams: { returnUrl: state.url },
+  });
 };

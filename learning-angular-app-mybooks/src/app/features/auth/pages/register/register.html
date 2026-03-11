@@ -1,0 +1,31 @@
+<section class="auth-shell">
+  <div class="auth-card">
+    <h1>Create a myBooks account</h1>
+    <p class="subtitle">Register with email and password for JWT auth flow testing.</p>
+
+    <p class="message error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="you@example.com" />
+      <p class="field-error" *ngIf="showError('email', 'required')">Email is required.</p>
+      <p class="field-error" *ngIf="showError('email', 'email')">Enter a valid email.</p>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Create a password" />
+      <p class="field-error" *ngIf="showError('password', 'required')">Password is required.</p>
+      <p class="field-error" *ngIf="showError('password', 'minlength')">
+        Password must be at least 6 characters.
+      </p>
+
+      <button type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Creating account...' : 'Register' }}
+      </button>
+    </form>
+
+    <p class="footer-text">
+      Already registered?
+      <a routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</section>

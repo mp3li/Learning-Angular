@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
 import { CreateEdit } from './create-edit';
 
@@ -8,7 +10,15 @@ describe('CreateEdit', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateEdit]
+      imports: [CreateEdit],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of(convertToParamMap({})),
+          },
+        },
+      ],
     })
     .compileComponents();
 

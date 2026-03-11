@@ -10,6 +10,7 @@
           </p>
         </div>
         <a
+          *ngIf="isAdmin$ | async"
           routerLink="/create-edit"
           class="inline-flex items-center rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-sky-700"
         >
@@ -119,6 +120,7 @@
         <div class="item-actions">
           <a [routerLink]="['/items', item.id]">View details</a>
           <button
+            *ngIf="isAdmin$ | async"
             type="button"
             (click)="deleteObject(item)"
             [disabled]="isDeleting(item.id)"
@@ -128,6 +130,10 @@
         </div>
       </article>
     </div>
+
+    <p *ngIf="!(isAdmin$ | async)" class="status empty">
+      Admin role is required for create and delete actions.
+    </p>
 
     <div class="pagination-row">
       <button type="button" (click)="previousPage()" [disabled]="!canGoToPreviousPage">

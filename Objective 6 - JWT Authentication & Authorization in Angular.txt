@@ -1,0 +1,46 @@
+2/8/2026
+
+Objective:
+
+The goal of this assignment is to help you understand how authentication and authorization work in a modern Angular application using JWT (JSON Web Token) concepts. You will create a simple, working login and role‑based access system by mocking the server logic inside your existing Angular project. By the end, you should understand login, logout, token handling, protected routes, and how to hide or show UI based on user roles.
+
+Instructions:
+
+1. Create Login and Register Pages
+
+    • Build two components: one for registration and one for login. Each form should ask for an email and password.
+
+    • When registering, hash the password before storing it in an in‑memory user list inside a service. Assign a default role (for example, "user") or manually assign "admin" to one test account.
+
+2. Mock the “Server” Inside Angular
+
+    • Create a service that simulates server actions:
+        • Register a new user (save to an in‑memory array).
+        • Log in by checking the hashed password.
+        • Return a mock JWT token that includes user id, email, role, and expiration.
+
+    • This does not need real encryption—just follow the idea of a token that your AuthService can read.
+
+3. Implement AuthService
+
+    • Create methods for login, register, logout, getting the token, checking if the user is logged in, and reading the role from the token. Store the token in localStorage for this exercise.
+
+4. Add Route Guards
+
+    • Use CanActivate to protect certain pages.
+        • Protect a general page so only logged-in users can access it.
+        • Protect an admin page so only users with role "admin" can open it.
+
+5. Add Role‑Based UI
+
+    • In your components, hide or disable elements that require admin access (for example, show an "Admin Panel" button only for admin users).
+
+6. Implement Logout
+
+    • Clear the token from storage and redirect the user to the login page.
+
+7. Test Your Authentication Flow
+        • Create a user through the register page.
+        • Log in and confirm the token is stored.
+        • Try navigating to protected routes while logged out and verify that you are redirected.
+        • Log in as admin (or create an admin user) and verify admin features appear.
